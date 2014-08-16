@@ -3,46 +3,52 @@
 <?php echo $this->Form->create('User'); ?>
     
         <legend>Cadastro de Usuário</legend>
-        <div class="input-control text">
+        
+        <label>Nome</label>
+        <div class="input-control text span4" data-role="input-control">
         <?php echo $this->Form->input('nome',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "Nome"
+            "label"=> false,
+            'div' => null
         ));?>
         </div>
-        <div class="input-control text">
+        
+        <label>CPF - CNPJ</label>
+        <div class="input-control text span4" data-role="input-control">
         <?php echo $this->Form->input('cpfCnpj',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "CPF - CNPJ"
+             "label"=> false,
+            'div' => null
         ));?>
         </div>
-        <div class="input-control text">
+        
+        <label>Email</label>
+        <div class="input-control text span4" data-role="input-control">
         <?php echo $this->Form->input('email',array(
-            'class'=> 'input-control email span4',
-            'data-role' => 'input-control',
-            "label"=> "Email"
+            "label"=> false,
+            'div' => null
         ));?>
         </div>
-        <div class="input-control text">
+        
+        <label>Login</label>
+        <div class="input-control text span4" data-role="input-control">
         <?php echo $this->Form->input('username',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "Login"
+            "label"=> false,
+            'div' => null
         ));?>
         </div>
-        <div class="input-control text">
+        
+        <label>Senha</label>
+        <div class="input-control text span4" data-role="input-control">
         <?php echo $this->Form->input('password',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "Senha"
+            "label"=> false,
+            'div' => null
         ));?>
         </div>
-        <div class="input-control text">
-        <?php echo $this->Form->input('password',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "Confirme sua senha"
+        
+        <label>Confirme sua senha</label>
+        <div class="input-control text span4" data-role="input-control">
+        <?php echo $this->Form->input('confirmeSenha',array(
+            "label"=> false,
+            'div' => null
         ));?>
         </div>
         
