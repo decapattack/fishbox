@@ -48,7 +48,7 @@ class JogadoresController extends AppController {
         if ($this->request->is('post')) {
             $this->Jogadore->create();
             if ($this->Jogadore->save($this->request->data)) {
-                $this->Session->setFlash(__('Prêmio gravado com sucesso'));
+                //$this->Session->setFlash(__('Prêmio gravado com sucesso'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash(__('Erro ao gravar o prêmio.'));

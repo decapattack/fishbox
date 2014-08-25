@@ -3,27 +3,20 @@
 class PerguntaRespostasController extends AppController {
 
     public $components = array('Session');
-    var $uses = array('CategoriaPergunta','Resposta', 'PerguntaResposta');
-
+    var $uses = array('CategoriaPergunta', 'Resposta', 'PerguntaResposta');
 
     /*
      * Index
      */
 
     public function index() {
-        /* $this->Paginator->settings = $this->paginate;
-          $data = $this->Paginator->paginate('jogo');
-          $this->set('jogo',$data); */
-        
-        //$this->loadModel('Resposta');
-        //$this->set('respostas',$this->Resposta->find('all'));
         $this->loadModel('CategoriaPergunta');
-        $this->set('categoriaPerguntas',$this->CategoriaPergunta->find('list'));
+        $this->set('categoriaPerguntas', $this->CategoriaPergunta->find('list'));
         $this->set('perguntasRespostas', $this->PerguntaResposta->find('all'));
     }
 
     /*
-     * Tela de edi��o
+     * Tela de edição
      * @param id
      */
 
@@ -43,34 +36,36 @@ class PerguntaRespostasController extends AppController {
      * Adiciona Jogo
      */
 
+    public function viewAdd() {
+        
+    }
+
     public function add() {
         $this->loadModel('CategoriaPergunta');
-            $options = $this->CategoriaPergunta->find('list',array(
-                                                'fields'=>array(
-                                                    'id',
-                                                    'nome'
-                                                    )
-                                                ));
-            $this->set('categoriaPerguntas',$options);
+        $options = $this->CategoriaPergunta->find('list', array(
+            'fields' => array(
+                'id',
+                'nome'
+            )
+        ));
+        $this->set('categoriaPerguntas', $options);
         if ($this->request->is('post')) {
             $this->PerguntaResposta->create();
-             $this->PerguntaResposta->save($this->request->data);
-            //if(!empty($perguntaResposta)){
+            $this->PerguntaResposta->saveAll($this->request->data,array("deep"=>true));
+            /*if(!empty($perguntaResposta)){
                 $this->request->data['Resposta']['pergunta_respostas_id'] = $this->PerguntaResposta->id;
-            //}
-            //if () {
-                $this->PerguntaResposta->Resposta->saveMany($this->request->data['Resposta']);
-                return $this->redirect(array('action' => 'add'));
-            //}
-            //$this->Session->setFlash(__('Erro ao gravar o pr�mio.'));
-        }else{
-            
+            }
+            if ($this->PerguntaResposta->Resposta->saveMany($this->request->data['Resposta'])) {
+                
+            }*/
+            $this->Session->setFlash(__('Erro ao gravar o premio.'));
+            return $this->redirect(array('action' => 'add'));
+            //
         }
-            
     }
 
     /*
-     * Edi��o de pr�mio
+     * Edicao de premio
      * @param id
      */
 
@@ -98,5 +93,4 @@ class PerguntaRespostasController extends AppController {
     }
 
 }
-
 ?>
