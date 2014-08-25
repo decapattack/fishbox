@@ -1,44 +1,43 @@
 <!-- File: /app/View/Posts/index.ctp -->
 
-<h1>Blog posts</h1>
-<p><?php echo $this->Html->link('Add Jogador', array('action' => 'add')); ?></p>
+<legend>Consulta de Jogadores</legend>
 <table class="table striped bordered">
     <tr>
         <th>Id</th>
         <th>Nome</th>
         <th>Código do Cupom</th>
+        <th>Deletar</th>
     </tr>
 
 <!-- Here's where we loop through our $posts array, printing out post info -->
 
     <?php foreach ($jogadores as $jogador): ?>
     <tr>
-        <td><?php echo $jogador['Jogador']['id']; ?></td>
+        <td><?php echo $jogador['Jogadore']['id']; ?></td>
         <td>
             <?php
                 echo $this->Html->link(
-                    $jogador['Jogador']['title'],
-                    array('action' => 'view', $jogador['Jogador']['id'])
+                    $jogador['Jogadore']['nome'],
+                    array('action' => 'view', $jogador['Jogadore']['id'])
                 );
             ?>
         </td>
+        <td><?php echo $jogador['Jogadore']['codigo_cupom']; ?></td>
         <td>
             <?php
                 echo $this->Form->postLink(
                     'Delete',
-                    array('action' => 'delete', $jogador['Jogador']['id']),
+                    array('action' => 'delete', $jogador['Jogadore']['id']),
                     array('confirm' => 'Are you sure?')
                 );
             ?>
             <?php
                 echo $this->Html->link(
-                    'Edit', array('action' => 'edit', $jogador['Jogador']['id'])
+                    'Edit', array('action' => 'edit', $jogador['Jogadore']['id'])
                 );
             ?>
         </td>
-        <td>
-            <?php echo $jogador['Jogador']['created']; ?>
-        </td>
+        
     </tr>
     <?php endforeach; ?>
 

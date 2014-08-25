@@ -1,26 +1,27 @@
 <?php
+
 class PostsController extends AppController {
+
     public $helpers = array('Html', 'Form', 'Session');
     public $components = array('Session');
-    
-    /*public $components = array('Paginator');
 
-    public $paginate = array(
-        'limit' => 2,
-        'order' => array(
-            'Post.title' => 'asc'
-        )
-    );*/
+    /* public $components = array('Paginator');
 
+      public $paginate = array(
+      'limit' => 2,
+      'order' => array(
+      'Post.title' => 'asc'
+      )
+      ); */
 
     public function index() {
-    
-        /*$this->Paginator->settings = $this->paginate;
 
-         similar to findAll(), but fetches paged results
-        $data = $this->Paginator->paginate('Post');
-        $this->set('posts', $data);*/
-    
+        /* $this->Paginator->settings = $this->paginate;
+
+          similar to findAll(), but fetches paged results
+          $data = $this->Paginator->paginate('Post');
+          $this->set('posts', $data); */
+
         $this->set('posts', $this->Post->find('all'));
     }
 
@@ -46,42 +47,44 @@ class PostsController extends AppController {
             $this->Session->setFlash(__('Unable to add your post.'));
         }
     }
-	
-	public function edit($id = null) {
-		if (!$id) {
-			throw new NotFoundException(__('Invalid post'));
-		}
 
-		$post = $this->Post->findById($id);
-		if (!$post) {
-			throw new NotFoundException(__('Invalid post'));
-		}
+    public function edit($id = null) {
+        if (!$id) {
+            throw new NotFoundException(__('Invalid post'));
+        }
 
-		if ($this->request->is(array('post', 'put'))) {
-			$this->Post->id = $id;
-			if ($this->Post->save($this->request->data)) {
-				$this->Session->setFlash(__('Your post has been updated.'));
-				return $this->redirect(array('action' => 'index'));
-			}
-			$this->Session->setFlash(__('Unable to update your post.'));
-		}
+        $post = $this->Post->findById($id);
+        if (!$post) {
+            throw new NotFoundException(__('Invalid post'));
+        }
 
-		if (!$this->request->data) {
-			$this->request->data = $post;
-		}
-	}
-	
-	public function delete($id) {
-		if ($this->request->is('get')) {
-			throw new MethodNotAllowedException();
-		}
+        if ($this->request->is(array('post', 'put'))) {
+            $this->Post->id = $id;
+            if ($this->Post->save($this->request->data)) {
+                $this->Session->setFlash(__('Your post has been updated.'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Session->setFlash(__('Unable to update your post.'));
+        }
 
-		if ($this->Post->delete($id)) {
-			$this->Session->setFlash(
-				__('The post with id: %s has been deleted.', h($id))
-			);
-			return $this->redirect(array('action' => 'index'));
-		}
-	}
+        if (!$this->request->data) {
+            $this->request->data = $post;
+        }
+    }
+
+    public function delete($id) {
+        if ($this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+
+        if ($this->Post->delete($id)) {
+            $this->Session->setFlash(
+                    __('The post with id: %s has been deleted.', h($id))
+            );
+            return $this->redirect(array('action' => 'index'));
+        }
+    }
+
 }
+
 ?>

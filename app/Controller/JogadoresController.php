@@ -20,24 +20,24 @@ class JogadoresController extends AppController {
         /* $this->Paginator->settings = $this->paginate;
           $data = $this->Paginator->paginate('jogo');
           $this->set('jogo',$data); */
-        $this->set('jogadores', $this->Jogador->find('all'));
+        $this->set('jogadores', $this->Jogadore->find('all'));
     }
 
     /*
-     * Tela de edi��o
+     * Tela de edição
      * @param id
      */
 
     public function view($id) {
         if (!$id) {
-            throw new NotFoundException(__('Jogador inv�lido'));
+            throw new NotFoundException(__('Prêmio inválido'));
         }
 
-        $jogador = $this->Jogador->findById($id);
-        if (!$jogador) {
-            throw new NotFoundException(__('Jogador inv�lido'));
+        $premio = $this->Premio->findById($id);
+        if (!$premio) {
+            throw new NotFoundException(__('Prêmio inválido'));
         }
-        $this->set('jogador', $jogador);
+        $this->set('premio', $premio);
     }
 
     /*
@@ -46,39 +46,40 @@ class JogadoresController extends AppController {
 
     public function add() {
         if ($this->request->is('post')) {
-            $this->Jogador->create();
-            if ($this->Jogador->save($this->request->data)) {
-                $this->Session->setFlash(__('Jogo gravado com sucesso'));
+            $this->Jogadore->create();
+            if ($this->Jogadore->save($this->request->data)) {
+                $this->Session->setFlash(__('Prêmio gravado com sucesso'));
                 return $this->redirect(array('action' => 'index'));
             }
+            $this->Session->setFlash(__('Erro ao gravar o prêmio.'));
         }
     }
 
     /*
-     * Edi��o de pr�mio
+     * Edição de prêmio
      * @param id
      */
 
     public function edit($id = null) {
         if (!$id) {
-            throw new NotFoundException(__('Jogador não encontrado'));
+            throw new NotFoundException(__('Jogo não encontrado'));
         }
 
-        $jogador = $this->Jogador->id = $id;
-        if (!$jogador) {
-            throw new NotFoundException("Jogador não Encontrado.");
+        $post = $this->Premio->id = $id;
+        if (!premio) {
+            throw new NotFoundException("Jogo não Encontrado.");
         }
 
         if ($this->request->is(array('post', 'put'))) {
-            $this->Jogador->id = $id;
-            if ($this->Jogador->save($this->request->data)) {
+            $this->Premio->id = $id;
+            if ($this->Premio->save($this->request->data)) {
                 $this->Session->setFlash("Editado com sucesso!");
                 return $this->redirect(array('action' => 'index'));
             }
         }
 
         if ($this->request->data) {
-            $this->request->data = $jogador;
+            $this->request->data = $premio;
         }
     }
 

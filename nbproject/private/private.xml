@@ -3,8 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Model/Jogadore.php</file>
             <file>file:/C:/xampp/htdocs/fishbox/app/View/Jogadores/add.ctp</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/View/Jogos/add.ctp</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Model/Resposta.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/View/Posts/add.ctp</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Model/PerguntaResposta.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Model/CategoriaPergunta.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/View/PerguntaRespostas/add.ctp</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/PostsController.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/PerguntaRespostasController.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/JogadoresController.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Model/Post.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/index.php</file>
         </group>
     </open-files>
 </project-private>

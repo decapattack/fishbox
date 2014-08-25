@@ -77,36 +77,36 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <li class="stick">
                         <a class="dropdown-toggle" href="#" >Usuários</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="">Cadastro</a></li>
-                            <li><a href="">Consulta</a></li>
+                            <li><a href="/fishbox/users/add">Cadastro</a></li>
+                            <li><a href="/fishbox/users/index">Consulta</a></li>
                         </ul>
                     </li>
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Grupos</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="">Cadastro</a></li>
-                            <li><a href="">Consulta</a></li>
+                            <li><a href="/fishbox/grupos/add">Cadastro</a></li>
+                            <li><a href="/fishbox/grupos/index">Consulta</a></li>
                         </ul>
                     </li>
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Jogos</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="">Cadastro</a></li>
-                            <li><a href="">Consulta</a></li>
+                            <li><a href="/fishbox/jogos/add">Cadastro</a></li>
+                            <li><a href="/fishbox/jogos/index">Consulta</a></li>
                         </ul>
                     </li>
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Jogador</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="">Cadastro</a></li>
-                            <li><a href="">Consulta</a></li>
+                            <li><a href="/fishbox/jogadores/add">Cadastro</a></li>
+                            <li><a href="/fishbox/jogadores/index">Consulta</a></li>
                         </ul>
                     </li>
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Prêmios</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="">Cadastro</a></li>
-                            <li><a href="">Consulta</a></li>
+                            <li><a href="/fishbox/premios/add">Cadastro</a></li>
+                            <li><a href="/fishbox/premios/index">Consulta</a></li>
                         </ul>
                     </li>
                 </ul>

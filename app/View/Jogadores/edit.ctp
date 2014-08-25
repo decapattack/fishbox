@@ -1,10 +1,29 @@
-<!-- File: /app/View/Jogadores/edit.ctp -->
+﻿<!-- app/View/Jogadores/edit.ctp -->
 
-<h1>Edit Post</h1>
-<?php
-echo $this->Form->create('Jogador');
-echo $this->Form->input('nome');
-echo $this->Form->input('codigo_cupom');
-echo $this->Form->input('id', array('type' => 'hidden'));
-echo $this->Form->end('Save Post');
-?>
+<?php echo $this->Form->create('Jogadore'); ?>
+
+<legend>Edição de Jogador</legend>
+        
+        <label>Nome</label>
+        <div class="input-control text span4" data-role="input-control">
+        <?php echo $this->Form->input('nome',array(
+            "label"=> false,
+            'div' => null,
+            "value"=> h($jogadore['Jogadore']['nome'])
+        ));?>
+        </div>
+        
+        <label>Código do Cupom</label>
+        <div class="input-control text span4" data-role="input-control">
+        <?php echo $this->Form->input('codigo_cupom',array(
+             "label"=> false,
+            'div' => null,
+            "value"=> h($jogadore['Jogadore']['codigo_cupom'])
+        ));?>
+        </div>
+        <?php echo $this->Form->input('id', array('type' => 'hidden'));?>
+        
+        
+    
+<p> <?php echo $this->Form->end('Gravar'); ?></p>
+

@@ -1,6 +1,6 @@
 <!-- File: /app/View/Jogos/index.ctp -->
 
-<legend>Usuários</legend>
+<legend>Busca de Jogos</legend>
 <p><?php echo $this->Html->link('Add Jogo', array('action' => 'add')); ?></p>
 <table class="table striped bordered">
     <tr>
@@ -16,15 +16,15 @@
     <tr>
         <td><?php echo $jogo['Jogo']['id']; ?></td>
         <td>
-            <?php $jogo['Jogo']['nome']; ?>
+            <?php echo $jogo['Jogo']['nome']; ?>
         </td>
         <td>
-            <?php $jogo['Jogo']['uri']; ?>
+            <?php echo $jogo['Jogo']['uri']; ?>
         </td>
         <td><button>
             <?php
                 echo $this->Html->link(
-                    'Edit', array('action' => 'view', $user['User']['id'])
+                    'Edit', array('action' => 'edit', $jogo['Jogo']['id'])
                 );
             ?>
             </button>
@@ -33,7 +33,7 @@
     <?php endforeach; ?>
 
 </table>
-<?php echo $this->Paginator->numbers(); ?>    
-             <?php echo $this->Paginator->prev('<- Previous', null, null, array('class' => 'disabled')); ?>
-    <?php echo $this->Paginator->next('Next ->', null, null, array('class' => 'disabled')); ?>    
-    <?php echo $this->Paginator->counter(); ?>
+<?php /*echo $this->Paginator->numbers();*/ ?>    
+             <?php /*echo $this->Paginator->prev('<- Previous', null, null, array('class' => 'disabled'));*/ ?>
+    <?php /*echo $this->Paginator->next('Next ->', null, null, array('class' => 'disabled'));*/ ?>    
+    <?php /*echo $this->Paginator->counter();*/ ?>
