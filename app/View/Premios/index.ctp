@@ -1,6 +1,6 @@
 <!-- File: /app/View/Premios/index.ctp -->
 
-<legend>Consulta de Prêmios</legend>
+<legend>Consultar Prêmios</legend>
 <p><?php echo $this->Html->link('Adicionar Prêmio', array('action' => 'add')); ?></p>
 <table class="table striped bordered">
     <tr>

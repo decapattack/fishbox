@@ -3,7 +3,7 @@
 <div class="users form">
 <?php echo $this->Form->create('Post'); ?>
     <fieldset>
-        <legend>EdiÁ„o de Usu·rio</legend>
+        <legend>Edi√ß√£o de Usu√°rio</legend>
         <div class="input-control text">
         <?php echo $this->Form->input('username',array(
             'class'=> 'input-control text span4',

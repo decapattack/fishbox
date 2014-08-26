@@ -1,6 +1,6 @@
 <!-- File: /app/View/Posts/index.ctp -->
 
-<legend>Consulta de Jogadores</legend>
+<legend>Consultar Jogadores</legend>
 <table class="table striped bordered">
     <tr>
         <th>Id</th>

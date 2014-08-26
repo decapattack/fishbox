@@ -1,13 +1,13 @@
 <!-- File: /app/View/Posts/index.ctp -->
 
-<legend>Usuários</legend>
-<p><?php echo $this->Html->link('Add Post', array('action' => 'add')); ?></p>
+<legend>Consultar Usuários</legend>
+<p><?php echo $this->Html->link('Adicionar Uruário', array('action' => 'add')); ?></p>
 <table class="table striped bordered">
     <tr>
         <th>Id</th>
-        <th>Title</th>
-        <th>Actions</th>
-        <th>Created</th>
+        <th>Nome</th>
+        <th>Ações</th>
+        <th>Criado Em</th>
     </tr>
 
 <!-- Here's where we loop through our $posts array, printing out post info -->

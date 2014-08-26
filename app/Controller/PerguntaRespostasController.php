@@ -58,7 +58,7 @@ class PerguntaRespostasController extends AppController {
             if ($this->PerguntaResposta->Resposta->saveMany($this->request->data['Resposta'])) {
                 
             }*/
-            $this->Session->setFlash(__('Erro ao gravar o premio.'));
+            //$this->Session->setFlash(__('Erro ao gravar o premio.'));
             return $this->redirect(array('action' => 'add'));
             //
         }
@@ -71,12 +71,12 @@ class PerguntaRespostasController extends AppController {
 
     public function edit($id = null) {
         if (!$id) {
-            throw new NotFoundException(__('Jogo n�o encontrado'));
+            throw new NotFoundException(__('Jogo não encontrado'));
         }
 
         $post = $this->PerguntaResposta->id = $id;
         if (!premio) {
-            throw new NotFoundException("Jogo n�o Encontrado.");
+            throw new NotFoundException("Jogo não Encontrado.");
         }
 
         if ($this->request->is(array('post', 'put'))) {

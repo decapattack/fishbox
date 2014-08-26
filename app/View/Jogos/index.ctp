@@ -1,6 +1,6 @@
 <!-- File: /app/View/Jogos/index.ctp -->
 
-<legend>Busca de Jogos</legend>
+<legend>Consultar Jogos</legend>
 <p><?php echo $this->Html->link('Add Jogo', array('action' => 'add')); ?></p>
 <table class="table striped bordered">
     <tr>

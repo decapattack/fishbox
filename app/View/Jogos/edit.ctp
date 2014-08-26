@@ -1,6 +1,6 @@
 <!-- File: /app/View/Jogos/edit.ctp -->
 
-<h1>Edit Post</h1>
+<h1>Editar Jogo</h1>
 <?php
 echo $this->Form->create('Jogos');
 echo $this->Form->input('nome');

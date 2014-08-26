@@ -23,5 +23,4 @@
         
         
     
-<p> <?php echo $this->Form->end('Gravar'); ?></p>
-
+<p> <?php echo $this->Form->end(__('Gravar')); ?></p>

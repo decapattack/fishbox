@@ -2,7 +2,7 @@
 
 <?php echo $this->Form->create('Jogadore'); ?>
 
-<legend>Edição de Jogador</legend>
+<legend>Editar Jogador</legend>
         
         <label>Nome</label>
         <div class="input-control text span4" data-role="input-control">

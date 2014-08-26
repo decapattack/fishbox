@@ -81,13 +81,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                             <li><a href="/fishbox/users/index">Consulta</a></li>
                         </ul>
                     </li>
-                    <li class="stick">
+                    <!--<li class="stick">
                         <a class="dropdown-toggle" href="#">Grupos</a>
                         <ul class="dropdown-menu" data-role="dropdown">
                             <li><a href="/fishbox/grupos/add">Cadastro</a></li>
                             <li><a href="/fishbox/grupos/index">Consulta</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Jogos</a>
                         <ul class="dropdown-menu" data-role="dropdown">
@@ -107,6 +107,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                         <ul class="dropdown-menu" data-role="dropdown">
                             <li><a href="/fishbox/premios/add">Cadastro</a></li>
                             <li><a href="/fishbox/premios/index">Consulta</a></li>
+                        </ul>
+                    </li>
+                    <li class="stick">
+                        <a class="dropdown-toggle" href="#">Perguntas e Respostas</a>
+                        <ul class="dropdown-menu" data-role="dropdown">
+                            <li><a href="/fishbox/perguntaRespostas/add">Cadastro</a></li>
+                            <li><a href="/fishbox/perguntaRespostas/index">Consulta</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -2,7 +2,11 @@
 
 class JogadoresController extends AppController {
 
-    public $components = array('Session');
+    //public $components = array('Session');
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('add', 'logout');
+    }
 
     /* public $components = array('Paginator');
       public $paginate = array(
@@ -47,12 +51,11 @@ class JogadoresController extends AppController {
     public function add() {
         if ($this->request->is('post')) {
             $this->Jogadore->create();
-            if ($this->Jogadore->save($this->request->data)) {
+            $this->Jogadore->save($this->request->data); 
                 //$this->Session->setFlash(__('Prêmio gravado com sucesso'));
-                return $this->redirect(array('action' => 'index'));
-            }
-            $this->Session->setFlash(__('Erro ao gravar o prêmio.'));
-        }
+            return $this->redirect(array('action' => 'index'));
+
+        }        
     }
 
     /*

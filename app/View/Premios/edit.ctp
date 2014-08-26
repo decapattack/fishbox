@@ -1,6 +1,6 @@
 <!-- File: /app/View/Posts/edit.ctp -->
 
-<h1>Edit Prêmio</h1>
+<h1>Editar PrÃªmio</h1>
 <?php
 echo $this->Form->create('Premio');
 echo $this->Form->input('nome');
