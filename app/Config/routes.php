@@ -25,7 +25,8 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	//Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
-	Router::connect('/fishbox/', array('controller' => 'posts', 'action' => 'index'));
+	Router::connect('/', array('controller' => 'posts', 'action' => 'index'));
+        //Router::connect('/index/login', array('controller' => 'pages', 'action' => 'display', 'login'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

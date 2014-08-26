@@ -32,16 +32,17 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     //public $components = array('DebugKit.Toolbar');
+    //public $customLayouts = array('Login'=>'login');
     public $components = array(
         'Session',
         'Auth' => array(
             'loginRedirect' => array(
-                'controller' => 'posts',
-                'action' => 'index'
+                'controller' => 'index',
+                'action' => 'login'
             ),
             'logoutRedirect' => array(
-                'controller' => 'pages',
-                'action' => 'display',
+                'controller' => 'index',
+                'action' => 'login',
                 'home'
             ),
             'authenticate' => array(
@@ -66,5 +67,18 @@ class AppController extends Controller {
         // Default deny
         return false;
     }
+    
+    /*public function beforeRender(){
+        
+        if (array_key_exists($this->name, $this->customLayouts)){
+          $this->layout = $this->customLayouts[$this->name];
+        }else{
+          # default to default.ctp
+          $this->layout = 'default';
+        }
+        //to help debug/verify your controller names, if need be
+        $this->log($this->name, 'debug');
+    }*/
     //...
+     
 }

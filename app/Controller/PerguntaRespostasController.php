@@ -27,19 +27,15 @@ class PerguntaRespostasController extends AppController {
 
         $perguntaResposta = $this->PerguntaResposta->findById($id);
         if (!$perguntaResposta) {
-            throw new NotFoundException(__('Pr�mio inv�lido'));
+            throw new NotFoundException(__('Pergunta Inválida'));
         }
         $this->set('perguntaResposta', $perguntaResposta);
     }
-
+    
     /*
-     * Adiciona Jogo
+     * Adiciona Perguntas e Respostas
+     * 
      */
-
-    public function viewAdd() {
-        
-    }
-
     public function add() {
         $this->loadModel('CategoriaPergunta');
         $options = $this->CategoriaPergunta->find('list', array(
@@ -51,16 +47,12 @@ class PerguntaRespostasController extends AppController {
         $this->set('categoriaPerguntas', $options);
         if ($this->request->is('post')) {
             $this->PerguntaResposta->create();
-            $this->PerguntaResposta->saveAll($this->request->data,array("deep"=>true));
-            /*if(!empty($perguntaResposta)){
-                $this->request->data['Resposta']['pergunta_respostas_id'] = $this->PerguntaResposta->id;
+            if($this->PerguntaResposta->saveAll($this->request->data,array("deep"=>true))){
+                $this->Session->setFlash(__('Gravado com sucesso.'));
+            }else{
+                $this->Session->setFlash(__('Erro ao gravar o premio.'));
             }
-            if ($this->PerguntaResposta->Resposta->saveMany($this->request->data['Resposta'])) {
-                
-            }*/
-            //$this->Session->setFlash(__('Erro ao gravar o premio.'));
             return $this->redirect(array('action' => 'add'));
-            //
         }
     }
 

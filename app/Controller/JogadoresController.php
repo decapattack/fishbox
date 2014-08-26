@@ -21,9 +21,6 @@ class JogadoresController extends AppController {
      */
 
     public function index() {
-        /* $this->Paginator->settings = $this->paginate;
-          $data = $this->Paginator->paginate('jogo');
-          $this->set('jogo',$data); */
         $this->set('jogadores', $this->Jogadore->find('all'));
     }
 
