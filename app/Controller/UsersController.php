@@ -2,9 +2,10 @@
 // app/Controller/UsersController.php
 class UsersController extends AppController {
 
+
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('add', 'logout');
+        $this->Auth->allow('logout','login');
     }
 
     public function index() {
@@ -68,6 +69,7 @@ class UsersController extends AppController {
     }
     
     public function login() {
+        $this->layout = 'login';
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 return $this->redirect($this->Auth->redirect());

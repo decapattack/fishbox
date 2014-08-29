@@ -2,11 +2,11 @@
 
 class JogadoresController extends AppController {
 
-    //public $components = array('Session');
-    public function beforeFilter() {
+    public $components = array('Session');
+    /*public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('add', 'logout');
-    }
+    }*/
 
     /* public $components = array('Paginator');
       public $paginate = array(

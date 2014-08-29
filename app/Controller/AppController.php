@@ -37,11 +37,11 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'loginRedirect' => array(
-                'controller' => 'index',
+                'controller' => 'users',
                 'action' => 'login'
             ),
             'logoutRedirect' => array(
-                'controller' => 'index',
+                'controller' => 'users',
                 'action' => 'login',
                 'home'
             ),
