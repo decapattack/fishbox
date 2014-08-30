@@ -71,7 +71,7 @@ class UsersController extends AppController {
     public function login() {
         $this->layout = 'login';
         if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
+            if ($this->Auth->login()== 1) {
                 return $this->redirect($this->Auth->redirect());
             }
             $this->Session->setFlash(__('Nããããão.'));
