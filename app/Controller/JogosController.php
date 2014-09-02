@@ -29,7 +29,7 @@ class JogosController extends AppController{
 		}
 		
 		$jogo = $this->Jogo->findById($id);
-		if (!jogo) {
+		if (!$jogo) {
 			throw new NotFoundException(__('Jogo inválido'));
 		}
 		$this->set('jogo', $jogo);
@@ -57,22 +57,43 @@ class JogosController extends AppController{
             throw new NotFoundException(__('Jogo não encontrado'));
         }
         
-        $post = $this->Jogo->id = $id;
-        if(!jogo){
+        $jogo = $this->Jogo->id = $id;
+        if(!$jogo){
         	throw new NotFoundException("Jogo não Encontrado.");
         }
         
         if($this->request->is(array('post','put'))){
         	$this->Jogo->id = $id;
         	if($this->Jogo->save($this->request->data)){
-        		$this->Session->setFlash("Editado com sucesso!");
-        		return $this->redirect(array('action'=>'index'));
+                    $this->Session->setFlash("Editado com sucesso!");
+                    return $this->redirect(array('action'=>'index'));
         	}
+        }else{
+            if (!$id) {
+                    throw new NotFoundException(__('Jogo inválido'));
+            }
+		
+            $jogo = $this->Jogo->findById($id);
+            if (!$jogo) {
+                    throw new NotFoundException(__('Jogo inválido'));
+            }
+            $this->set('jogo', $jogo);
+        }   
+    }
+    
+    public function delete($id = null) {
+        $this->request->onlyAllow('post');
+
+        $this->Jogo->id = $id;
+        if (!$this->Jogo->exists()) {
+            throw new NotFoundException(__('Jogo inválido.'));
         }
-        
-        if($this->request->data){
-        	$this->request->data = $jogo;
+        if ($this->Jogo->delete()) {
+            $this->Session->setFlash(__('Jogo deletado.'));
+            return $this->redirect(array('action' => 'index'));
         }
+        $this->Session->setFlash(__('Jogo não foi deletado.'));
+        return $this->redirect(array('action' => 'index'));
     }
 }
 ?>

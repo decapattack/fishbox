@@ -1,37 +1,38 @@
-<!-- File: /app/View/Premios/view.ctp -->
+<!-- File: /app/View/Users/view.ctp -->
 
 <div class="users form">
-<?php echo $this->Form->create('Premio'); ?>
+<?php echo $this->Form->create('Post'); ?>
     <fieldset>
-        <legend>Edição de Prêmio</legend>
+        <legend>Edição de Usuário</legend>
         <div class="input-control text">
-        <?php echo $this->Form->input('nome',array(
+        <?php echo $this->Form->input('username',array(
             'class'=> 'input-control text span4',
             'data-role' => 'input-control',
             "label"=> "Nome",
-            "value"=> h($premio['Premio']['nome'])
+            "value"=> h($user['User']['username'])
         ));?>
         </div>
         <div class="input-control text">
-        <?php echo $this->Form->input('descricao',array(
+        <?php echo $this->Form->input('email',array(
             'class'=> 'input-control text span4',
             'data-role' => 'input-control',
-            "label"=> "descricao",
-            "value"=> h($premio['Premio']['descricao'])
+            "label"=> "Email",
+            "value"=> h($user['User']['email'])
         ));?>
         </div>
         <div class="input-control text">
-        <?php echo $this->Form->input('local_retirada',array(
+        <?php echo $this->Form->input('username',array(
             'class'=> 'input-control text span4',
             'data-role' => 'input-control',
-            "label"=> "Local d Retirada",
-            "value"=> h($premio['Premio']['local_retirada'])
+            "label"=> "Login",
+            "value"=> h($user['User']['username'])
         ));?>
         </div>
+        
     </fieldset>
     <?php echo $this->Form->input('id', array(
         'type' => 'hidden',
-        'value'=>h($premio['Premio']['id'])
+        'value'=>h($user['User']['id'])
         
         )); ?>
 <p> <?php echo $this->Form->end(__('Gravar')); ?></p>

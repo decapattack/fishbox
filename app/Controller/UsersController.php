@@ -1,10 +1,19 @@
 <?php
-// app/Controller/UsersController.php
-class UsersController extends AppController {
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+App::uses('AppController', 'Controller');
+
+class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+        $this->Auth->authError = __('abcd.');
+        $this->Auth->loginError = __('efgh.');
         $this->Auth->allow('logout','login');
     }
 
@@ -25,11 +34,11 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                //$this->Session->setFlash(__('The user has been saved'));
+                $this->Session->setFlash(__('The user has been saved'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash(
-                __('The user could not be saved. Please, try again.')
+                    __('Erro ao salvar usuário. Por favor, tente novamente.')
             );
         }
     }
@@ -45,12 +54,10 @@ class UsersController extends AppController {
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash(
-                __('The user could not be saved. Please, try again.')
+                    __('The user could not be saved. Please, try again.')
             );
-        } else {
-            $this->request->data = $this->User->read(null, $id);
-            unset($this->request->data['User']['password']);
-        }
+        } 
+        $this->set('user', $this->User->read(null, $id));
     }
 
     public function delete($id = null) {
@@ -58,28 +65,29 @@ class UsersController extends AppController {
 
         $this->User->id = $id;
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Usuário inválido'));
         }
         if ($this->User->delete()) {
-            $this->Session->setFlash(__('User deleted'));
+            $this->Session->setFlash(__('Usuário deletado'));
             return $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('User was not deleted'));
+        $this->Session->setFlash(__('Erro ao deletar usuário'));
         return $this->redirect(array('action' => 'index'));
     }
-    
+
     public function login() {
         $this->layout = 'login';
         if ($this->request->is('post')) {
-            if ($this->Auth->login()== 1) {
+            if ($this->Auth->login()) {
                 return $this->redirect($this->Auth->redirect());
             }
-            $this->Session->setFlash(__('Nããããão.'));
+            $this->Session->setFlash(__('Login ou senha inválidos.'));
         }
     }
 
     public function logout() {
         return $this->redirect($this->Auth->logout());
     }
+
 }
 ?>

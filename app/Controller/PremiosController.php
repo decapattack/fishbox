@@ -82,6 +82,21 @@ class PremiosController extends AppController {
             $this->request->data = $premio;
         }
     }
+    
+    public function delete($id = null) {
+        $this->request->onlyAllow('post');
+
+        $this->Premio->id = $id;
+        if (!$this->Premio->exists()) {
+            throw new NotFoundException(__('Prêmio inválido.'));
+        }
+        if ($this->Premio->delete()) {
+            $this->Session->setFlash(__('Prêmio deletado.'));
+            return $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('Erro ao deletar prêmio.'));
+        return $this->redirect(array('action' => 'index'));
+    }
 
 }
 

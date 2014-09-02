@@ -44,11 +44,6 @@ class AppController extends Controller {
                 'controller' => 'users',
                 'action' => 'login',
                 'home'
-            ),
-            'authenticate' => array(
-                'Form' => array(
-                    'passwordHasher' => 'Blowfish'
-                )
             )
         ),
         'DebugKit.Toolbar'
@@ -58,7 +53,7 @@ class AppController extends Controller {
         $this->Auth->allow('index', 'view');
     }
     
-    public function isAuthorized($user) {
+    /*public function isAuthorized($user) {
         // Admin can access every action
         if (isset($user['role']) && $user['role'] === 'admin') {
             return true;
@@ -66,7 +61,7 @@ class AppController extends Controller {
 
         // Default deny
         return false;
-    }
+    }*/
     
     /*public function beforeRender(){
         
@@ -80,5 +75,5 @@ class AppController extends Controller {
         $this->log($this->name, 'debug');
     }*/
     //...
-     
 }
+?>

@@ -1,8 +1,7 @@
 ﻿<!-- app/View/Jogos/add.ctp -->
-
 <?php echo $this->Form->create('Jogo'); ?>
     
-        <legend>Cadastro de Jogador</legend>
+        <legend>Cadastro de Jogo</legend>
         
         <label>Nome</label>
         <div class="input-control text span4" data-role="input-control">

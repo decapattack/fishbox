@@ -1,43 +1,36 @@
-<!-- File: /app/View/Users/view.ctp -->
+<!-- File: /app/View/Jogos/view.ctp -->
 
-<div class="users form">
-<?php echo $this->Form->create('Post'); ?>
-    <fieldset>
-        <legend>Edi��o de Jogo</legend>
-        <div class="input-control text">
-        <?php echo $this->Form->input('username',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "Nome",
-            "value"=> h($user['User']['username'])
+
+<?php echo $this->Form->create('Jogo'); ?>
+        <legend>Edição de Jogo</legend>
+        <label>Nome</label>
+        <div class="input-control text span4" data-role="input-control">
+        <?php echo $this->Form->input('nome',array(
+            "label"=> false,
+            'div' => null,
+            'value'=> h($jogo['Jogo']['nome'])
         ));?>
         </div>
-        <div class="input-control text">
-        <?php echo $this->Form->input('email',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "Email",
-            "value"=> h($user['User']['email'])
+        <label>URI</label>
+        <div class="input-control text span4" data-role="input-control">
+        <?php echo $this->Form->input('uri',array(
+            "label"=> false,
+            'div' => null,
+            'value'=> h($jogo['Jogo']['uri'])
         ));?>
         </div>
-        <div class="input-control text">
-        <?php echo $this->Form->input('username',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "Login",
-            "value"=> h($user['User']['username'])
-        ));?>
-        </div>
-        <div class="input-control text">
-        <?php echo $this->Form->input('password',array(
-            'class'=> 'input-control text span4',
-            'data-role' => 'input-control',
-            "label"=> "Senha",
-            "value"=> h($user['User']['password'])
+        <label>Descrição</label>
+        <div class="input-control text span4" data-role="input-control">
+        <?php echo $this->Form->input('descricao',array(
+            "label"=> false,
+            'div' => null,
+            'value'=> h($jogo['Jogo']['descricao'])
         ));?>
         </div>
         
-    </fieldset>
-    <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
+    <?php echo $this->Form->input('id', array(
+        'type' => 'hidden',
+        'value'=>h($jogo['Jogo']['id'])
+        
+        )); ?>
 <p> <?php echo $this->Form->end(__('Gravar')); ?></p>
-</div>

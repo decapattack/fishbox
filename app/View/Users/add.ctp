@@ -12,7 +12,7 @@
         ));?>
         </div>
         
-        <label>CPF - CNPJ</label>
+        <label>CPF</label>
         <div class="input-control text span4" data-role="input-control">
         <?php echo $this->Form->input('cpfCnpj',array(
              "label"=> false,
@@ -48,7 +48,8 @@
         <div class="input-control text span4" data-role="input-control">
         <?php echo $this->Form->input('confirmeSenha',array(
             "label"=> false,
-            'div' => null
+            'div' => null,
+            'type'=>'password'
         ));?>
         </div>
         

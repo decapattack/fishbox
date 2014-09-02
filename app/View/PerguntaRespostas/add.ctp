@@ -14,7 +14,7 @@
         
         <label>Selecione a Categoria da Pergunta</label>
         <div class="input-control select span4" data-role="input-control">
-        <?php echo $this->Form->input('PerguntaResposta.categoriaPerguntas', array(
+        <?php echo $this->Form->input('PerguntaResposta.categoria_perguntas_id', array(
             'options' => $categoriaPerguntas,
             'empty' => '(Escolha uma)',
             "label"=> false,

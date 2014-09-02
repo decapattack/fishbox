@@ -16,6 +16,21 @@ class JogadoresController extends AppController{
             $this->Session->setFlash(__('Erro ao gravar Jogador'));
         }
     }
+    
+    public function delete($id = null) {
+        $this->request->onlyAllow('post');
+
+        $this->Jogadore->id = $id;
+        if (!$this->Jogadore->exists()) {
+            throw new NotFoundException(__('Jogador inválido.'));
+        }
+        if ($this->Jogadore->delete()) {
+            $this->Session->setFlash(__('Jogador deletado.'));
+            return $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('Erro ao deletar jogador.'));
+        return $this->redirect(array('action' => 'index'));
+    }
 }
 
 ?>

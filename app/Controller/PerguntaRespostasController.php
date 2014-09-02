@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class PerguntaRespostasController extends AppController {
 
@@ -12,7 +12,7 @@ class PerguntaRespostasController extends AppController {
     public function index() {
         $this->loadModel('CategoriaPergunta');
         $this->set('categoriaPerguntas', $this->CategoriaPergunta->find('list'));
-        $this->set('perguntasRespostas', $this->PerguntaResposta->find('all'));
+        $this->set('perguntas', $this->PerguntaResposta->find('all'));
     }
 
     /*
@@ -21,14 +21,27 @@ class PerguntaRespostasController extends AppController {
      */
 
     public function view($id) {
+        $perguntaResposta = $this->PerguntaResposta->findById($id);
+        $this->loadModel('CategoriaPergunta');
+        $options = $this->CategoriaPergunta->find('list', array(
+            'fields' => array(
+                'id',
+                'nome'
+            )
+        ));
+        $this->loadModel('Resposta');
+        $respostas = $this->Resposta->find('all',array(
+            'conditions' => array('Resposta.pergunta_respostas_id' => $id)
+        ));
+        
         if (!$id) {
             throw new NotFoundException(__('Pergunta Inválida'));
         }
-
-        $perguntaResposta = $this->PerguntaResposta->findById($id);
         if (!$perguntaResposta) {
             throw new NotFoundException(__('Pergunta Inválida'));
         }
+        $this->set('categoriaPerguntas',$options);
+        $this->set('respostas', $respostas);
         $this->set('perguntaResposta', $perguntaResposta);
     }
     
@@ -62,26 +75,49 @@ class PerguntaRespostasController extends AppController {
      */
 
     public function edit($id = null) {
-        if (!$id) {
-            throw new NotFoundException(__('Jogo não encontrado'));
-        }
-
-        $post = $this->PerguntaResposta->id = $id;
-        if (!premio) {
-            throw new NotFoundException("Jogo não Encontrado.");
-        }
 
         if ($this->request->is(array('post', 'put'))) {
             $this->PerguntaResposta->id = $id;
-            if ($this->PerguntaResposta->saveAll($this->request->data)) {
+            if ($this->PerguntaResposta->saveAssociated($this->request->data)) {
                 $this->Session->setFlash("Editado com sucesso!");
-                return $this->redirect(array('action' => 'add'));
+                return $this->redirect(array('action' => 'index'));
             }
         }
+        
+        $perguntaResposta = $this->PerguntaResposta->findById($id);
+        $this->loadModel('CategoriaPergunta');
+        $options = $this->CategoriaPergunta->find('list', array(
+            'fields' => array(
+                'id',
+                'nome'
+            )
+        ));
+        $this->loadModel('Resposta');
+        $respostas = $this->Resposta->find('all',array(
+            'conditions' => array('Resposta.pergunta_respostas_id' => $id)
+        ));
+        $this->set('categoriaPerguntas',$options);
+        $this->set('respostas', $respostas);
+        $this->set('perguntaResposta', $perguntaResposta);
 
-        if ($this->request->data) {
+        /*if ($this->request->data) {
             $this->request->data = $perguntaResposta;
+        }*/
+    }
+    
+    public function delete($id = null) {
+        $this->request->onlyAllow('post');
+
+        $this->PerguntaResposta->id = $id;
+        if (!$this->PerguntaResposta->exists()) {
+            throw new NotFoundException(__('Pergunta não encontrada.'));
         }
+        if ($this->PerguntaResposta->delete()) {
+            $this->Session->setFlash(__('Pergunta deletada.'));
+            return $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('Erro ao deletar pergunta.'));
+        return $this->redirect(array('action' => 'index'));
     }
 
 }

@@ -103,6 +103,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
             jQuery(document).ready(function() {
                 ajustaLayout();
                 jQuery("#page-body").css("display","block");
+                mensagemErro();
             });
             $(window).resize(ajustaLayout);
             function ajustaLayout(){
@@ -110,6 +111,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
                     left: ($(document).width() - $('#caralho').width())/2,
                     top: (($(document).height() - $('#caralho').height())/2)-50
                 });
+            }
+            function mensagemErro(){
+                if(jQuery("#flashMessage").length > 0){
+                    jQuery("#flashMessage").css({
+                        'background-color':'#ffffff',
+                        'border-radius':'5px',
+                        'width':'200px',
+                        'margin-left':'40px',
+                        '-webkit-box-shadow':'2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
+                        '-moz-box-shadow': '2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
+                        'box-shadow': '2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
+                        'background': 'linear-gradient(to bottom, rgba(242,246,248,1) 0%, rgba(135,137,138,1) 100%)'
+                    });
+                }
             }
         </script>
     </body>

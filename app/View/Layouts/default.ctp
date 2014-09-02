@@ -40,12 +40,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('script');
 	?>
 </head>
-<?php echo $this->Session->flash(); ?>
-<body class="metro">
+
+<body class="metro" id="corposite" style="display:none">
     <nav class="navigation-bar ">
         <nav class="navigation-bar-content">
             <div class="element">
-                <img src="/fishbox/img/logo-fishbox-menu-topo.png" style="margin-top: -12px;"/>
+                <img src="/img/logo-fishbox-menu-topo.png" style="margin-top: -12px;"/>
             </div>
             <div class="element place-right">
                 <a class="dropdown-toggle" href="#">
@@ -56,7 +56,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 </ul>
             </div>
             <span class="element-divider place-right"></span>
-            <a class="element place-right" href="#"><span class="icon-locked-2"></span></a>
+            <a class="element place-right" href="#"><?php
+                $user = $this->Session->read('Auth.User');
+                    if(!empty($user)) {
+                        print ("Olá, ".$user['nome']);
+                    }
+            ?></a>
             <span class="element-divider place-right"></span>
             <button class="element image-button image-left place-right">
                 
@@ -74,8 +79,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <li class="stick">
                         <a class="dropdown-toggle" href="#" >Usuários</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="/fishbox/users/add">Cadastro</a></li>
-                            <li><a href="/fishbox/users/index">Consulta</a></li>
+                            <li><a href="/users/add">Cadastro</a></li>
+                            <li><a href="/users/index">Consulta</a></li>
                         </ul>
                     </li>
                     <!--<li class="stick">
@@ -88,29 +93,29 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Jogos</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="/fishbox/jogos/add">Cadastro</a></li>
-                            <li><a href="/fishbox/jogos/index">Consulta</a></li>
+                            <li><a href="/jogos/add">Cadastro</a></li>
+                            <li><a href="/jogos/index">Consulta</a></li>
                         </ul>
                     </li>
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Jogador</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="/fishbox/jogadores/add">Cadastro</a></li>
-                            <li><a href="/fishbox/jogadores/index">Consulta</a></li>
+                            <li><a href="jogadores/add">Cadastro</a></li>
+                            <li><a href="jogadores/index">Consulta</a></li>
                         </ul>
                     </li>
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Prêmios</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="/fishbox/premios/add">Cadastro</a></li>
-                            <li><a href="/fishbox/premios/index">Consulta</a></li>
+                            <li><a href="/premios/add">Cadastro</a></li>
+                            <li><a href="/premios/index">Consulta</a></li>
                         </ul>
                     </li>
                     <li class="stick">
                         <a class="dropdown-toggle" href="#">Perguntas e Respostas</a>
                         <ul class="dropdown-menu" data-role="dropdown">
-                            <li><a href="/fishbox/perguntaRespostas/add">Cadastro</a></li>
-                            <li><a href="/fishbox/perguntaRespostas/index">Consulta</a></li>
+                            <li><a href="/perguntaRespostas/add">Cadastro</a></li>
+                            <li><a href="/perguntaRespostas/index">Consulta</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -120,7 +125,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         
         <div class="containerComBorda sombraBorda containerForm">
             <?php echo $this->fetch('content'); ?>
-            <?php /*echo $this->element('sql_dump');*/ ?>
+            <?php echo $this->Session->flash(); ?>
         </div>
 </div>
 <script type="text/javascript">
@@ -128,8 +133,55 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         jQuery("a,abbr,acronym,address,applet,area,article,aside,audio,b,base,basefont,bdi,bdo,bgsound,big,blink,blockquote,body,br,button,canvas,caption,center,cite,code,col,colgroup,content,data,datalist,dd,decorator,del,details,dfn,dialog,dir,div,dl,dt,element,em,embed,fieldset,figcaption,figure,font,footer,form,frame,frameset,h1,h2,h3,h4,h5,h6,head,header,hgroup,hr,html,i,iframe,img,input,ins,isindex,kbd,keygen,label,legend,li,link,listing,main,map,mark,marquee,menu,menuitem,meta,meter,nav,nobr,noframes,noscript,object,ol,optgroup,option,output,p,param,picture,plaintext,pre,progress,q,rp,rt,ruby,s,samp,script,section,select,shadow,small,source,spacer,span,strike,strong,style,sub,summary,sup,table,tbody,td,template,textarea,tfoot,th,thead,time,title,tr,track,tt,u,ul,var,video,wbr,xmp").css({
             'font-family':'Arial',
             'font-weight':'normal'
-        });    
+        });
+        jQuery('label').css({
+            'font-size':'12px',
+            'font-family':'Arial'
+        });
+        
+        jQuery('label').css({
+            'font-size':'12px',
+            'font-family':'Arial'
+        });
+        
+        jQuery('legend').css({
+            'font-size':'16px',
+            'font-family':'Arial'
+        });
+        
+        jQuery('li').css({
+            'font-size':'12px',
+            'font-family':'Arial',
+            'letter-spacing': '0.00em'
+        });
+        
+        jQuery('.dropdown-toggle').css({
+            'font-weight':'bold'
+        });
+        
+        
+        jQuery("#corposite").css({
+            "display":"block",
+            'background-image': "url('/img/bright_squares2.png')"
+        });
+        
+        
+        
     });
+    function mensagemFlash(){
+                if(jQuery("#flashMessage").length > 0){
+                    jQuery("#flashMessage").css({
+                        'background-color':'#ffffff',
+                        'border-radius':'5px',
+                        'width':'200px',
+                        'margin-left':'40px',
+                        '-webkit-box-shadow':'2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
+                        '-moz-box-shadow': '2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
+                        'box-shadow': '2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
+                        'background': 'linear-gradient(to bottom, rgba(242,246,248,1) 0%, rgba(135,137,138,1) 100%)'
+                    });
+                }
+            }
 </script>
 </body>
 </html>

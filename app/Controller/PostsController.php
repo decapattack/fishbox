@@ -1,38 +1,26 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 class PostsController extends AppController {
 
-    public $helpers = array('Html', 'Form', 'Session');
-    public $components = array('Session');
-
-    /* public $components = array('Paginator');
-
-      public $paginate = array(
-      'limit' => 2,
-      'order' => array(
-      'Post.title' => 'asc'
-      )
-      ); */
+    public $helpers = array('Html', 'Form');
 
     public function index() {
-
-        /* $this->Paginator->settings = $this->paginate;
-
-          similar to findAll(), but fetches paged results
-          $data = $this->Paginator->paginate('Post');
-          $this->set('posts', $data); */
-
         $this->set('posts', $this->Post->find('all'));
     }
 
-    public function view($id) {
+    public function view($id = null) {
         if (!$id) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException(__('Post inválido'));
         }
-
-        $post = $this->Post->findById($id);
+        $post = $this->Post->findbyId($id);
         if (!$post) {
-            throw new NotFoundException(__('Invalid post'));
+            throw new NotFoundException("Post não encontrado");
         }
         $this->set('post', $post);
     }
@@ -41,10 +29,10 @@ class PostsController extends AppController {
         if ($this->request->is('post')) {
             $this->Post->create();
             if ($this->Post->save($this->request->data)) {
-                $this->Session->setFlash(__('Your post has been saved.'));
+                $this->Session->setFlash("Gravado com sucesso");
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(__('Unable to add your post.'));
+            $this->Session->setFlash("Erro ao cadastrar");
         }
     }
 
@@ -72,19 +60,4 @@ class PostsController extends AppController {
         }
     }
 
-    public function delete($id) {
-        if ($this->request->is('get')) {
-            throw new MethodNotAllowedException();
-        }
-
-        if ($this->Post->delete($id)) {
-            $this->Session->setFlash(
-                    __('The post with id: %s has been deleted.', h($id))
-            );
-            return $this->redirect(array('action' => 'index'));
-        }
-    }
-
 }
-
-?>

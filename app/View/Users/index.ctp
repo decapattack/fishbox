@@ -1,11 +1,11 @@
 <!-- File: /app/View/Posts/index.ctp -->
 
 <legend>Consultar Usuários</legend>
-<p><?php echo $this->Html->link('Adicionar Uruário', array('action' => 'add')); ?></p>
+<p><?php echo $this->Html->link('Adicionar Usuário', array('action' => 'add'),array('class'=>'button')); ?></p>
 <table class="table striped bordered">
     <tr>
-        <th>Id</th>
         <th>Nome</th>
+        <th>Login</th>
         <th>Ações</th>
         <th>Criado Em</th>
     </tr>
@@ -14,28 +14,34 @@
 
     <?php foreach ($users as $user): ?>
     <tr>
-        <td><?php echo $user['User']['id']; ?></td>
         <td>
             <?php
-                echo $this->Html->link(
-                    $user['User']['username'],
-                    array('action' => 'view', $user['User']['id'])
-                );
+                echo $user['User']['nome'];
             ?>
         </td>
         <td>
             <?php
+                echo $user['User']['username'];
+            ?>
+        </td>
+        <td style="text-align: center">
+            
+            <?php
                 echo $this->Form->postLink(
-                    'Delete',
+                    'Deletar',
                     array('action' => 'delete', $user['User']['id']),
-                    array('confirm' => 'Are you sure?')
+                    array('confirm' => 'Are you sure?','class'=>'button')
                 );
             ?>
+            
+            
             <?php
                 echo $this->Html->link(
-                    'Edit', array('action' => 'view', $user['User']['id'])
+                    'Editar', array('action' => 'edit', $user['User']['id']),
+                    array('class'=>'button')
                 );
             ?>
+            
         </td>
         <td>
             <?php echo $user['User']['created']; ?>

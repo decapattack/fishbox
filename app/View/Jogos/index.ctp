@@ -1,33 +1,41 @@
 <!-- File: /app/View/Jogos/index.ctp -->
 
 <legend>Consultar Jogos</legend>
-<p><?php echo $this->Html->link('Add Jogo', array('action' => 'add')); ?></p>
+<p><?php echo $this->Html->link('Adicionar Jogo', array('action' => 'add'),array('class'=>'button')); ?></p>
 <table class="table striped bordered">
     <tr>
-        <th>Id</th>
+        
         <th>Nome</th>
         <th>URI</th>
-        <th>Editar</th>
+        <th>Ações</th>
     </tr>
 
 <!-- Here's where we loop through our $posts array, printing out post info -->
 
     <?php foreach ($jogos as $jogo): ?>
     <tr>
-        <td><?php echo $jogo['Jogo']['id']; ?></td>
+        
         <td>
             <?php echo $jogo['Jogo']['nome']; ?>
         </td>
         <td>
             <?php echo $jogo['Jogo']['uri']; ?>
         </td>
-        <td><button>
+        <td style="text-align: center">
             <?php
                 echo $this->Html->link(
-                    'Edit', array('action' => 'edit', $jogo['Jogo']['id'])
+                    'Editar', array('action' => 'edit', $jogo['Jogo']['id']),
+                    array('class'=>'button')
                 );
             ?>
-            </button>
+            <?php
+                echo $this->Form->postLink(
+                    'Deletar',
+                    array('action' => 'delete', $jogo['Jogo']['id']),
+                    array('confirm' => 'Tem certeza?', 'class'=>'button')
+                );
+            ?>
+            
         </td>
     </tr>
     <?php endforeach; ?>

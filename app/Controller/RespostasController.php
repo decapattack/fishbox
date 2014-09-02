@@ -25,18 +25,18 @@ class RespostasController extends AppController {
     }
 
     /*
-     * Tela de edição
+     * Tela de ediï¿½ï¿½o
      * @param id
      */
 
     public function view($id) {
         if (!$id) {
-            throw new NotFoundException(__('Prêmio inválido'));
+            throw new NotFoundException(__('Prmio invlido'));
         }
 
         $resposta = $this->Resposta->findById($id);
         if (!$resposta) {
-            throw new NotFoundException(__('Prêmio inválido'));
+            throw new NotFoundException(__('Prmio invlido'));
         }
         $this->set('resposta', $resposta);
     }
@@ -49,26 +49,26 @@ class RespostasController extends AppController {
         if ($this->request->is('post')) {
             $this->Resposta->create();
             if ($this->Resposta->save($this->request->data)) {
-                $this->Session->setFlash(__('Prêmio gravado com sucesso'));
+                $this->Session->setFlash(__('Prmio gravado com sucesso'));
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(__('Erro ao gravar o prêmio.'));
+            $this->Session->setFlash(__('Erro ao gravar o prmio.'));
         }
     }
 
     /*
-     * Edição de prêmio
+     * Ediï¿½ï¿½o de prï¿½mio
      * @param id
      */
 
     public function edit($id = null) {
         if (!$id) {
-            throw new NotFoundException(__('Jogo não encontrado'));
+            throw new NotFoundException(__('Jogo no encontrado'));
         }
 
         $resposta = $this->Resposta->id = $id;
         if (!$resposta) {
-            throw new NotFoundException("Jogo não Encontrado.");
+            throw new NotFoundException("Jogo no Encontrado.");
         }
 
         if ($this->request->is(array('post', 'put'))) {

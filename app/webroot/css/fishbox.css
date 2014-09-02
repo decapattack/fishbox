@@ -35,6 +35,7 @@ body{
     margin:10px 5px 5px 5px;
     padding:5px;
     min-width: 960px;
+    background-color: #ffffff;
 }
 
 .containerSemBorda{
@@ -48,3 +49,4 @@ body{
     -webkit-box-shadow: 0 0 2px #AAA;
     box-shadow: 0 0 2px #AAA;
 }
+
