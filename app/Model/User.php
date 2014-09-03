@@ -9,34 +9,51 @@ App::uses('AppModel', 'Model');
 App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class User extends AppModel {
+    
+    public $validate = array(
+        'nome' => array(
+            'rule' => 'notEmpty'
+        ),
+        'cpfCnpj' => array(
+            'rule' =>'notEmpty'
+        ),
+        'email'=>array(
+            'rule'=>'email'
+        ),
+        'username' => array(
+            'alphaNumeric' => array(
+                'rule'     => 'alphaNumeric',
+                'required' => true,
+                'message'  => 'Somente letras e números'
+            ),
+            'between' => array(
+                'rule'    => array('between', 5, 15),
+                'message' => 'Entre 5 e 15 caracteres'
+            ),'unique' => array(
+                'rule' => 'isUnique',
+                'required' => 'create',
+                'message'=>'Usuário já existe no sistema'
+            )
+        ),
+        'password'=>array(
+            'rule'    => array('minLength', 8),
+            'message' => 'Mínimo de 8 caracteres'
+        )
+    );
 
     public function beforeSave($options = array()) {
-        if (isset($this->data[$this->alias]['password'])) {
-            $passwordHasher = new BlowfishPasswordHasher();
-            $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+        if(!empty($this->data[$this->alias]['auxPassword'])) {
+                $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['auxPassword']);
+        
+        }elseif(!isset($this->data[$this->alias]['auxPassword'])){
+                $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+        
+        }else{
+                //nothing, leave the password is in database
         }
         return true;
     }
 
-    public $validate = array(
-        'nome'=>array(
-            'rule'=>'notEmpty',
-            'message'=>'Campo obrigatório.'
-        ),
-        'cpfCnpj'=>array(
-            'rule'=>'notEmpty'
-        ),
-        'email' => array(
-            'rule'=>'email'
-        ),
-        'username'=>array(
-            'rule'=>'alphaNumeric',
-            'required'=>true
-        ),
-        'password'=>array(
-            'rule'=>'alphaNumeric',
-            'required'=>true
-        )
-    );
+    
 }
 ?>

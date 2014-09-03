@@ -1,22 +1,21 @@
 <?php
 class JogosController extends AppController{
-	public $components = array('Session');
-	/*public $components = array('Paginator');
+	public $components = array('Session','Paginator');
 	public $paginate = array(
-		'limit'=>2,
-		'order'=>array(
-			'Jogo.nome'=>'asc'			
-		)
-	);*/
+        'limit' => 10,
+        'order' => array(
+            'Jogo.nome' => 'asc'
+        )
+    );
 	
 	/*
 	 * Index
 	 */
 	public function index(){
-		/*$this->Paginator->settings = $this->paginate;
-		$data = $this->Paginator->paginate('jogo');
-		$this->set('jogo',$data);*/
-		$this->set('jogos', $this->Jogo->find('all'));
+		$this->Paginator->settings = $this->paginate;
+		$data = $this->Paginator->paginate('Jogo');
+		$this->set('jogos',$data);
+		//$this->set('jogos', $this->Jogo->find('all'));
 	}
 	
 	/*

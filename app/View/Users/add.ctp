@@ -1,6 +1,6 @@
 <!-- app/View/Users/add.ctp -->
 
-<?php echo $this->Form->create('User'); ?>
+<?php echo $this->Form->create('User', array('onsubmit'=> 'return valida()')); ?>
     
         <legend>Cadastro de Usuário</legend>
         
@@ -55,3 +55,22 @@
         
     
 <p> <?php echo $this->Form->end(__('Gravar')); ?></p>
+<script>
+    function valida(){
+        var UserPassword = jQuery.trim(jQuery("#UserPassword").val());
+        var UserConfirmeSenha = jQuery.trim(jQuery("#UserConfirmeSenha").val());
+        if(UserPassword == ""){
+            alert("Preencha o campo Senha");
+            return false;
+        }
+        if(UserConfirmeSenha == ""){
+            alert("Preencha o campo Confirme Sua Senha");
+            return false;
+        }
+        if(UserPassword != UserConfirmeSenha){
+            alert("Os campos Senha e Confirme Sua Senha devem ser iguais");
+            return false;
+        }
+        return true;
+    }
+</script>

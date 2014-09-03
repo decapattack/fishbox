@@ -1,7 +1,7 @@
 <!-- File: /app/View/PerguntaRespostas/view.ctp -->
 
 <?php echo $this->Form->create('PerguntaResposta'); ?>
-<legend>Cadastro de Perguntas</legend>
+<legend>Edição de Perguntas</legend>
         
         <label>Pergunta</label>
         <div class="input-control text span4" data-role="input-control">
@@ -45,7 +45,7 @@
                 }else{
                     $checked = "";
                 }
-                echo $this->Form->checkbox('Resposta.'.$i.'.correta', array(
+                echo $this->Form->checkbox('Resposta.'.($i+1).'.correta', array(
                     'hiddenField' => false,
                     'checked'=>$checked
                     ));

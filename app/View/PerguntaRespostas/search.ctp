@@ -28,7 +28,7 @@
     <div class="span2">
     <?php echo $this->Form->button('Buscar', array('div' => false, 'class' => 'btn', 'style'=>'margin-left:-10px; height:34px;'));
     echo $this->Form->end();?>
-        </div>
+    </div>
 </div>
 
 </div>
@@ -51,26 +51,19 @@
         </td>
         <td  style="text-align: center">
             
-            
-            <?php
-                echo $this->Html->link(
-                    'Ver', array('action' => 'view', $pergunta['PerguntaResposta']['id']),
-                    array('class'=>'button')
-                );
-            ?>
-            
-            <?php
-                echo $this->Html->link(
-                    'Editar', array('action' => 'edit', $pergunta['PerguntaResposta']['id']),
-                    array('class'=>'button')
-                );
-            ?>
-            
             <?php
                 echo $this->Form->postLink(
                     'Deletar',
                     array('action' => 'delete', $pergunta['PerguntaResposta']['id']),
                     array('confirm' => 'Tem certeza?', 'class'=>'button')
+                );
+            ?>
+            
+            
+            <?php
+                echo $this->Html->link(
+                    'Ver', array('action' => 'view', $pergunta['PerguntaResposta']['id']),
+                    array('class'=>'button')
                 );
             ?>
             

@@ -34,7 +34,7 @@ body{
     float:left;
     margin:10px 5px 5px 5px;
     padding:5px;
-    min-width: 960px;
+    width: 960px;
     background-color: #ffffff;
 }
 

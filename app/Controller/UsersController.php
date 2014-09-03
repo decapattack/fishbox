@@ -9,7 +9,16 @@
 App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
-
+    
+    public $components = array('Session','Paginator');
+    
+    public $paginate = array(
+        'limit' => 10,
+        'order' => array(
+            'User.nome' => 'asc'
+        )
+    );
+    
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->authError = __('abcd.');
@@ -18,8 +27,9 @@ class UsersController extends AppController {
     }
 
     public function index() {
-        $this->User->recursive = 0;
-        $this->set('users', $this->paginate());
+        $this->Paginator->settings = $this->paginate;
+        $data = $this->Paginator->paginate('User');
+        $this->set('users', $data);
     }
 
     public function view($id = null) {
@@ -34,7 +44,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
+                $this->Session->setFlash(__('Adicionado com sucesso.'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash(
@@ -46,15 +56,16 @@ class UsersController extends AppController {
     public function edit($id = null) {
         $this->User->id = $id;
         if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Usuário inválido'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
+            
             if ($this->User->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
+                $this->Session->setFlash(__('Editado com sucesso'));
                 return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash(
-                    __('The user could not be saved. Please, try again.')
+                    __('Erro ao editar usuário.')
             );
         } 
         $this->set('user', $this->User->read(null, $id));

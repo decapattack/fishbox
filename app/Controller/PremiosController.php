@@ -2,25 +2,24 @@
 
 class PremiosController extends AppController {
 
-    public $components = array('Session');
+    public $components = array('Session','Paginator');
 
-    /* public $components = array('Paginator');
-      public $paginate = array(
-      'limit'=>2,
-      'order'=>array(
-      'Jogo.nome'=>'asc'
-      )
-      ); */
+    public $paginate = array(
+        'limit' => 10,
+        'order' => array(
+            'Jogadore.nome' => 'asc'
+        )
+    );
 
     /*
      * Index
      */
 
     public function index() {
-        /* $this->Paginator->settings = $this->paginate;
-          $data = $this->Paginator->paginate('jogo');
-          $this->set('jogo',$data); */
-        $this->set('premios', $this->Premio->find('all'));
+        $this->Paginator->settings = $this->paginate;
+        $data = $this->Paginator->paginate('Premio');
+        $this->set('premios',$data);
+        
     }
 
     /*

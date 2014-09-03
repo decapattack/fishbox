@@ -2,8 +2,15 @@
 
 class PerguntaRespostasController extends AppController {
 
-    public $components = array('Session');
+    public $components = array('Session','Paginator');
+    
     var $uses = array('CategoriaPergunta', 'Resposta', 'PerguntaResposta');
+    public $paginate = array(
+        'limit' => 10,
+        'order' => array(
+            'PerguntaResposta.nome' => 'asc'
+        )
+    );
 
     /*
      * Index
@@ -11,8 +18,25 @@ class PerguntaRespostasController extends AppController {
 
     public function index() {
         $this->loadModel('CategoriaPergunta');
-        $this->set('categoriaPerguntas', $this->CategoriaPergunta->find('list'));
-        $this->set('perguntas', $this->PerguntaResposta->find('all'));
+        $options = $this->CategoriaPergunta->find('list', array(
+            'fields' => array(
+                'id',
+                'nome'
+            )
+        ));
+        // similar to findAll(), but fetches paged results
+        $this->Paginator->settings = $this->paginate;
+        $data = $this->Paginator->paginate('PerguntaResposta');
+        
+        
+        
+        
+        
+        
+        
+        
+        $this->set('categoriaPerguntas',$options);
+        $this->set('perguntas', $data);
     }
 
     /*
@@ -77,8 +101,10 @@ class PerguntaRespostasController extends AppController {
     public function edit($id = null) {
 
         if ($this->request->is(array('post', 'put'))) {
+            $this->loadModel('Resposta');
+            $this->Resposta->query("DELETE FROM respostas WHERE pergunta_respostas_id = ".$id);
             $this->PerguntaResposta->id = $id;
-            if ($this->PerguntaResposta->saveAssociated($this->request->data)) {
+            if ($this->PerguntaResposta->saveAll($this->request->data)) {
                 $this->Session->setFlash("Editado com sucesso!");
                 return $this->redirect(array('action' => 'index'));
             }
@@ -118,6 +144,34 @@ class PerguntaRespostasController extends AppController {
         }
         $this->Session->setFlash(__('Erro ao deletar pergunta.'));
         return $this->redirect(array('action' => 'index'));
+    }
+    
+    public function search() {
+        $this->Paginator->settings = $this->paginate;
+        $this->loadModel('CategoriaPergunta');
+        $options = $this->CategoriaPergunta->find('list', array(
+            'fields' => array(
+                'id',
+                'nome'
+            )
+        ));
+        $nome = $this->request->query['nome'];
+        $categoria = $this->request->query['categoria_perguntas_id'];
+        
+        $conditions = array();
+        if($nome != "" && $categoria == ""){
+            $conditions = array(array('PerguntaResposta.nome LIKE' => "%$nome%"));
+        }else if($nome == "" && $categoria != ""){
+            $conditions = array('PerguntaResposta.categoria_perguntas_id =' => $categoria);
+        }else if($nome != "" && $categoria != ""){
+            $conditions = array('AND' => array(
+                array('PerguntaResposta.nome LIKE' => "%$nome%"),
+                array('PerguntaResposta.categoria_perguntas_id =' => $categoria)
+            ));
+        }
+        $data = $this->Paginator->paginate('PerguntaResposta', $conditions);
+        $this->set('categoriaPerguntas',$options);
+        $this->set('perguntas', $data);
     }
 
 }

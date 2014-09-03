@@ -1,9 +1,18 @@
 <?php
 class JogadoresController extends AppController{
-    public $components = array("Session");
+    public $components = array('Session','Paginator');
+    
+    public $paginate = array(
+        'limit' => 10,
+        'order' => array(
+            'Jogadore.nome' => 'asc'
+        )
+    );
 
     public function index(){
-        $this->set('jogadores', $this->Jogadore->find('all'));
+        $this->Paginator->settings = $this->paginate;
+        $data = $this->Paginator->paginate('Jogadore');
+        $this->set('jogadores', $data);
     }
 
     public function add(){
