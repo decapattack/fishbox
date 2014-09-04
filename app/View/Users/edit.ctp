@@ -31,6 +31,15 @@
         ));?>
         </div>
         
+        <label>Tipo de Usuário</label>
+        <div class="input-control select span4" data-role="input-control">
+        <?php echo $this->Form->input('role', array(
+            'options' => array('admin' => 'Admin', 'usuario' => 'Usuario'),
+            "label"=> false,
+            'div' => null
+        ));?>
+        </div>
+        
         <label>Login</label>
         <div class="input-control text span4" data-role="input-control">
         <?php echo $this->Form->input('username',array(

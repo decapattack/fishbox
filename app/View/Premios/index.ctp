@@ -1,5 +1,5 @@
 <!-- File: /app/View/Premios/index.ctp -->
-
+<?php echo $this->Session->flash(); ?>
 <legend>Consultar Prêmios</legend>
 <p><?php echo $this->Html->link('Adicionar Prêmio', array('action' => 'add'),array('class'=>'button')); ?></p>
 <table class="table striped bordered">

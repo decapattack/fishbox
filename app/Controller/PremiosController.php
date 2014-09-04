@@ -60,6 +60,10 @@ class PremiosController extends AppController {
      */
 
     public function edit($id = null) {
+        if($this->Auth->user('role')!='admin'){
+            $this->Session->setFlash("Sem permissão!");
+             return $this->redirect(array('action'=>'index'));
+        }
         if (!$id) {
             throw new NotFoundException(__('Jogo não encontrado'));
         }
@@ -83,6 +87,10 @@ class PremiosController extends AppController {
     }
     
     public function delete($id = null) {
+        if($this->Auth->user('role')!='admin'){
+            $this->Session->setFlash("Sem permissão de acesso!");
+             return $this->redirect(array('action'=>'index'));
+        }
         $this->request->onlyAllow('post');
 
         $this->Premio->id = $id;

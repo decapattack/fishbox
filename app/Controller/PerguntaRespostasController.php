@@ -99,6 +99,10 @@ class PerguntaRespostasController extends AppController {
      */
 
     public function edit($id = null) {
+        if($this->Auth->user('role')!='admin'){
+            $this->Session->setFlash("Sem permissão!");
+             return $this->redirect(array('action'=>'index'));
+        }
 
         if ($this->request->is(array('post', 'put'))) {
             $this->loadModel('Resposta');
@@ -132,6 +136,10 @@ class PerguntaRespostasController extends AppController {
     }
     
     public function delete($id = null) {
+        if($this->Auth->user('role')!='admin'){
+            $this->Session->setFlash("Sem permissão!");
+             return $this->redirect(array('action'=>'index'));
+        }
         $this->request->onlyAllow('post');
 
         $this->PerguntaResposta->id = $id;

@@ -121,8 +121,9 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         
         
         <div class="containerComBorda sombraBorda containerForm">
+            
             <?php echo $this->fetch('content'); ?>
-            <?php echo $this->Session->flash(); ?>
+            
         </div>
 </div>
 <script type="text/javascript">
@@ -162,18 +163,22 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             'background-image': "url('/img/bright_squares2.png')"
         });
         mensagemErro();
+        mensagemFlash();
     });
     function mensagemFlash(){
                 if(jQuery("#flashMessage").length > 0){
                     jQuery("#flashMessage").css({
-                        'background-color':'#ffffff',
+                        'text-shadow': '0 -1px 0 #888',
+                        
+                        'color':'#ffffff',
                         'border-radius':'5px',
                         'width':'200px',
-                        'margin-left':'40px',
+                        'padding':'10px',
                         '-webkit-box-shadow':'2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
                         '-moz-box-shadow': '2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
                         'box-shadow': '2px 2px 5px 0px rgba(50, 50, 50, 0.75)',
-                        'background': 'linear-gradient(to bottom, rgba(242,246,248,1) 0%, rgba(135,137,138,1) 100%)'
+                        'background': 'linear-gradient(to bottom, rgba(200,200,200,1) 0%, rgba(135,137,138,1) 100%)'
+                        
                     });
                 }
             }
@@ -186,6 +191,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
             });
         }
     }
+
 </script>
 </body>
 </html>

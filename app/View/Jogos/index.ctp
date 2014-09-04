@@ -1,5 +1,5 @@
 <!-- File: /app/View/Jogos/index.ctp -->
-
+<?php echo $this->Session->flash(); ?>
 <legend>Consultar Jogos</legend>
 <p><?php echo $this->Html->link('Adicionar Jogo', array('action' => 'add'),array('class'=>'button')); ?></p>
 <table class="table striped bordered">

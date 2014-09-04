@@ -1,5 +1,5 @@
 <!-- File: /app/View/Posts/index.ctp -->
-
+<?php echo $this->Session->flash(); ?>
 <legend>Consultar Usuários</legend>
 <p><?php echo $this->Html->link('Adicionar Usuário', array('action' => 'add'),array('class'=>'button')); ?></p>
 <table class="table striped bordered">

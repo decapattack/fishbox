@@ -19,7 +19,7 @@ class User extends AppModel {
         ),
         'email'=>array(
             'rule'=>'email'
-        ),
+        )/*,
         'username' => array(
             'alphaNumeric' => array(
                 'rule'     => 'alphaNumeric',
@@ -38,7 +38,7 @@ class User extends AppModel {
         'password'=>array(
             'rule'    => array('minLength', 8),
             'message' => 'Mínimo de 8 caracteres'
-        )
+        )*/
     );
 
     public function beforeSave($options = array()) {

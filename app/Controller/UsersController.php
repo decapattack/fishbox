@@ -54,6 +54,10 @@ class UsersController extends AppController {
     }
 
     public function edit($id = null) {
+        /*if($id != $this->Auth->user('id')){
+            $this->Session->setFlash(__('Sem permissão de acesso.'));
+            return $this->redirect(array('action' => 'index'));
+        }*/
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Usuário inválido'));
@@ -72,6 +76,10 @@ class UsersController extends AppController {
     }
 
     public function delete($id = null) {
+        if($this->Auth->user('role')!='admin'){
+            $this->Session->setFlash("Sem permissão!");
+             return $this->redirect(array('action'=>'index'));
+        }
         $this->request->onlyAllow('post');
 
         $this->User->id = $id;

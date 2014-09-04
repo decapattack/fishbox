@@ -52,6 +52,11 @@ class JogosController extends AppController{
 	 * @param id
 	 */
     public function edit($id = null){
+        
+        if($this->Auth->user('role')!='admin'){
+            $this->Session->setFlash("Sem permissão de acesso!");
+             return $this->redirect(array('action'=>'index'));
+        }
         if(!$id){
             throw new NotFoundException(__('Jogo não encontrado'));
         }

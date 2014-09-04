@@ -1,5 +1,5 @@
 <!-- File: /app/View/PerguntaRespostas/index.ctp -->
-
+<?php echo $this->Session->flash(); ?>
 <legend>Consultar Perguntas</legend>
 <p><?php echo $this->Html->link('Adicionar Perguntas e Respostas', array('action' => 'add'),array('class'=>'button')); ?></p>
 

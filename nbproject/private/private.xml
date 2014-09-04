@@ -5,22 +5,17 @@
         <group>
             <file>file:/C:/xampp/htdocs/fishbox/app/View/Premios/index.ctp</file>
             <file>file:/C:/xampp/htdocs/fishbox/app/View/Jogos/index.ctp</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/View/Users/edit.ctp</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/View/Layouts/default.ctp</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/JogadoresController.php</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/View/Users/login.ctp</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/View/PerguntaRespostas/index.ctp</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/View/Layouts/login.ctp</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/JogosController.php</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/Model/User.php</file>
             <file>file:/C:/xampp/htdocs/fishbox/app/View/Jogadores/index.ctp</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/Model/Resposta.php</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/webroot/css/fishbox.css</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/Model/PerguntaResposta.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Model/User.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Config/core.php</file>
             <file>file:/C:/xampp/htdocs/fishbox/app/Controller/PremiosController.php</file>
-            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/PerguntaRespostasController.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/View/Layouts/default.ctp</file>
             <file>file:/C:/xampp/htdocs/fishbox/app/View/Users/index.ctp</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/PerguntaRespostasController.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/JogadoresController.php</file>
             <file>file:/C:/xampp/htdocs/fishbox/app/Controller/UsersController.php</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/View/PerguntaRespostas/index.ctp</file>
+            <file>file:/C:/xampp/htdocs/fishbox/app/Controller/JogosController.php</file>
         </group>
     </open-files>
 </project-private>

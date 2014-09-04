@@ -1,4 +1,5 @@
 <!-- File: /app/View/Jogadpores/index.ctp -->
+<?php echo $this->Session->flash(); ?>
 <legend>Consultar Jogadores</legend>
 <p><?php
 echo $this->Html->link('Adicionar Jogador',array('action'=>'add'),array('class'=>'button'));
